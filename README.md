@@ -477,3 +477,220 @@ This backend application is a simplified version of a platform for food delivery
     }
 }
 ```
+### Get reviews posted by a specific user
+`GET` `/user/{id}/reviews/`
+##### Response
+```yaml
+{
+    "success": true,
+    "data": [
+        {
+            "id": 1,
+            "rating": 2,
+            "content": "Meh"
+        },
+        {
+            "id": 2,
+            "rating": 5,
+            "content": "Amazing"
+        }
+        ...
+    ]
+}
+```
+### Get reviews of a specific restaurant
+`GET` `/restaurant/{id}/reviews/`
+##### Response
+```yaml
+{
+    "success": true,
+    "data": [
+        {
+            "id": 1,
+            "rating": 2,
+            "content": "Meh"
+        },
+        {
+            "id": 2,
+            "rating": 5,
+            "content": "Amazing"
+        }
+        ...
+    ]
+}
+```
+### Post restaurant review
+`POST` `/restaurant/{id}/review/`
+##### Request
+```yaml
+{
+    "rating": <USER INPUT FOR RATING>,
+    "content": <USER INPUT FOR CONTENT>,
+    "user_id": <USER INPUT FOR USER_ID>
+}
+```
+##### Response
+```yaml
+{
+    "success": true,
+    "data": {
+        "id": <ID>,
+        "rating": <USER INPUT FOR RATING>,
+        "content": <USER INPUT FOR CONTENT>
+    }
+}
+```
+### Update a specific review
+`POST` `/review/{id}/`
+##### Request
+```yaml
+{
+    "rating": <USER INPUT FOR RATING>,
+    "content": <USER INPUT FOR CONTENT>
+}
+```
+##### Response
+```yaml
+{
+    "success": true,
+    "data": {
+        "id": <ID>,
+        "rating": <USER INPUT FOR RATING>,
+        "content": <USER INPUT FOR CONTENT>
+    }
+}
+```
+### Delete a specific review
+`DELETE` `/review/{id}/`
+##### Response
+```yaml
+{
+    "success": true,
+    "data": {
+        "id": <ID>,
+        "rating": <USER INPUT FOR RATING>,
+        "content": <USER INPUT FOR CONTENT>
+    }
+}
+```
+### Get all categories
+`GET` `/categories/`
+##### Response
+```yaml
+{
+    "success": true,
+    "data": {
+        "id": 1,
+        "description": "Fast food"
+    }
+    ...
+}
+```
+### Create a category
+`POST` `/category/`
+##### Request
+```yaml
+{
+    "description": <USER INPUT FOR DESCRIPTION>
+}
+```
+##### Response
+```yaml
+{
+    "success": true,
+    "data": {
+        "id": <ID>,
+        "description": <USER INPUT FOR DESCRIPTION>
+    }
+}
+```
+### Add a restaurant to a category
+`POST` `/category/{id}/add/`
+##### Request
+```yaml
+{
+    "restaurant_id": <USER INPUT FOR RESTAURANT_ID>
+}
+```
+##### Response
+```yaml
+{
+    "success": true,
+    "data": {
+        "id": <ID>,
+        "description": <USER INPUT FOR DESCRIPTION>
+    }
+}
+```
+### Delete a specific category
+`DELETE` `/category/{id}/`
+##### Response
+```yaml
+{
+    "success": true,
+    "data": {
+        "id": <ID>,
+        "description": <USER INPUT FOR DESCRIPTION>
+    }
+}
+```
+### Register an account
+`POST` `/register/`
+##### Request
+```yaml
+{
+    "name": <USER INPUT FOR NAME>,
+    "username": <USER INPUT FOR USERNAME>,
+    "email": <USER INPUT FOR EMAIL>,
+    "password": <USER INPUT FOR PASSWORD>
+}
+```
+##### Response
+```yaml
+{
+    "session_token": <SESSION_TOKEN>,
+    "session_expiration": <SESSION_EXPIRATION>,
+    "update_token": <UPDATE_TOKEN>
+}
+```
+### Login
+`POST` `/login/`
+##### Request
+```yaml
+{
+    "email": <USER INPUT FOR EMAIL>,
+    "password": <USER INPUT FOR PASSWORD>
+}
+```
+##### Response
+```yaml
+{
+    "session_token": <SESSION_TOKEN>,
+    "session_expiration": <SESSION_EXPIRATION>,
+    "update_token": <UPDATE_TOKEN>
+}
+```
+### Update session
+`/POST/` `/session/`
+##### Request
+```yaml
+update_token
+```
+##### Response
+```yaml
+{
+    "session_token": <SESSION_TOKEN>,
+    "session_expiration": <SESSION_EXPIRATION>,
+    "update_token": <UPDATE_TOKEN>
+}
+```
+### Verify session implementation
+`/GET/` `/secret/`
+##### Response
+```yaml
+{
+    "session_token": <SESSION_TOKEN>,
+    "session_expiration": <SESSION_EXPIRATION>,
+    "update_token": <UPDATE_TOKEN>
+}
+```
