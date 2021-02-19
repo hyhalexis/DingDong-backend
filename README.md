@@ -23,7 +23,6 @@ https://alexishaodingdong.herokuapp.com/
     ]
 }
 ```
-
 ### Get a specific user
 `GET` `/user/{id}/`
 ##### Response
