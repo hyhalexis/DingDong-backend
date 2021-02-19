@@ -53,11 +53,10 @@ def add_to_balance(user_id):
     successful, session_token = extract_token(request)
     if not successful:
         return session_token
-
     user = users_dao.get_user_by_session_token(session_token)
     if not user or not user.verify_session_token(session_token):
         return json.dumps({"error": "Invalid session token."})
-        
+    
     body = json.loads(request.data)
     amount = body.get("amount")
     user = dao.add_to_balance(user_id, amount)
@@ -70,7 +69,6 @@ def update_user(user_id):
     successful, session_token = extract_token(request)
     if not successful:
         return session_token
-
     user = users_dao.get_user_by_session_token(session_token)
     if not user or not user.verify_session_token(session_token):
         return json.dumps({"error": "Invalid session token."})
@@ -86,7 +84,6 @@ def delete_user(user_id):
     successful, session_token = extract_token(request)
     if not successful:
         return session_token
-
     user = users_dao.get_user_by_session_token(session_token)
     if not user or not user.verify_session_token(session_token):
         return json.dumps({"error": "Invalid session token."})
